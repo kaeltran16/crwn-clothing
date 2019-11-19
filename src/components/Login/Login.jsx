@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './styles.scss';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
+import { signInWithGoogle } from '../../firebase/utils';
 
 
 const Login = () => {
@@ -22,7 +23,7 @@ const Login = () => {
          <h2>I already have an account</h2>
          <span>Log in with your email and password</span>
 
-         <form action={e => handleSubmit(e)}>
+         <form onSubmit={e => handleSubmit(e)}>
             <FormInput name='email' type='email' value={email} required
                        handleChange={e => handleChange(e, setEmail)}
                        label='Email'/>
@@ -30,8 +31,12 @@ const Login = () => {
             <FormInput name='password' type='password' value={password} required
                        handleChange={e => handleChange(e, setPassword)}
                        label='Password'/>
-
-            <Button type='submit'>Login</Button>
+            <div className='buttons'>
+               <Button type='submit'>Login</Button>
+               <Button type='button' onClick={signInWithGoogle} isGoogleSignIn>
+                  Login with Google
+               </Button>
+            </div>
          </form>
       </div>
    );
