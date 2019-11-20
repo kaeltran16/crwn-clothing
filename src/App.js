@@ -5,14 +5,24 @@ import { Route, Switch } from 'react-router-dom';
 import ShopPage from './pages/Shop/ShopPage';
 import Header from './components/Header/Header';
 import AuthPage from './pages/Auth/Auth';
-import { auth } from './firebase/utils';
+import { auth, createUserProfileDocument } from './firebase/utils';
 
 const App = () => {
    const [user, setUser] = useState(null);
    useEffect(() => {
-      const unsubscribe = auth.onAuthStateChanged(currentUser => {
-         console.log(currentUser);
-         setUser(currentUser);
+      const unsubscribe = auth.onAuthStateChanged(async userAuth => {
+         if (userAuth !== null) {
+            const userRef = await createUserProfileDocument(userAuth, null);
+
+            userRef.onSnapshot(snapshot => {
+               setUser({
+                  id: snapshot.id,
+                  ...snapshot.data()
+               });
+            });
+         }
+
+         setUser(userAuth);
       });
 
       return () => {
