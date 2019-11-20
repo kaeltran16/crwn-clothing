@@ -6,7 +6,7 @@ import ShopPage from './pages/Shop/ShopPage';
 import Header from './components/Header/Header';
 import { auth, createUserProfileDocument } from './firebase/utils';
 import { connect } from 'react-redux';
-import { setCurrentUser } from './redux/user/userAction';
+import { setCurrentUser } from './redux/user/userActions';
 import AuthPage from './pages/Auth/Auth';
 
 const App = ({ currentUser, setCurrentUser }) => {
