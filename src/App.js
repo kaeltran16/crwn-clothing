@@ -7,7 +7,7 @@ import Header from './components/Header/Header';
 import { auth, createUserProfileDocument } from './firebase/utils';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/userActions';
-import AuthPage from './pages/Auth/Auth';
+import AuthPage from './pages/Auth/AuthPage';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/userSelectors';
 import CheckoutPage from './pages/Checkout/CheckoutPage';
