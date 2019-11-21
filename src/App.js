@@ -10,6 +10,7 @@ import { setCurrentUser } from './redux/user/userActions';
 import AuthPage from './pages/Auth/Auth';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/userSelectors';
+import CheckoutPage from './pages/Checkout/CheckoutPage';
 
 const App = ({ currentUser, setCurrentUser }) => {
    useEffect(() => {
@@ -44,6 +45,7 @@ const App = ({ currentUser, setCurrentUser }) => {
             <Route path='/login'
                    render={() => currentUser ? <Redirect to='/'/> :
                       <AuthPage/>}/>
+            <Route path='/checkout' component={CheckoutPage}/>
          </Switch>
       </div>
    );
