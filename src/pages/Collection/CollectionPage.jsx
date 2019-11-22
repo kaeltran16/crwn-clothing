@@ -1,6 +1,5 @@
 import React from 'react';
 
-import './styles.scss';
 import { connect } from 'react-redux';
 import { selectCollection } from '../../redux/shop/shopSelectors';
 import CollectionItem from '../../components/CollectionItem/CollectionItem';
