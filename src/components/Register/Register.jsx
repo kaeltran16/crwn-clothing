@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 import { auth, createUserProfileDocument } from '../../firebase/utils';
+import { RegisterContainer, RegisterTitle } from './styles';
 
-import './styles.scss';
 
 const Register = () => {
    const [displayName, setDisplayName] = useState('');
@@ -35,8 +35,8 @@ const Register = () => {
    };
 
    return (
-      <div className='sign-up'>
-         <h2 className='title'>I do not an account</h2>
+      <RegisterContainer>
+         <RegisterTitle>I do not an account</RegisterTitle>
          <span>Sign up with your email and password</span>
 
          <form className='sign-up-form' onSubmit={e => handleSubmit(e)}>
@@ -59,7 +59,7 @@ const Register = () => {
 
             <Button type='submit'>Register</Button>
          </form>
-      </div>
+      </RegisterContainer>
    );
 };
 

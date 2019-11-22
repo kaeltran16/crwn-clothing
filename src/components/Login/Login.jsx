@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import './styles.scss';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 import { auth, signInWithGoogle } from '../../firebase/utils';
+import { LoginButtons, LoginContainer, LoginTitle } from './styles';
 
 
 const Login = () => {
@@ -25,8 +25,8 @@ const Login = () => {
       setter(value);
    };
    return (
-      <div className='login'>
-         <h2>I already have an account</h2>
+      <LoginContainer>
+         <LoginTitle>I already have an account</LoginTitle>
          <span>Log in with your email and password</span>
 
          <form onSubmit={e => handleSubmit(e)}>
@@ -37,14 +37,14 @@ const Login = () => {
             <FormInput name='password' type='password' value={password} required
                        handleChange={e => handleChange(e, setPassword)}
                        label='Password'/>
-            <div className='buttons'>
+            <LoginButtons>
                <Button type='submit'>Login</Button>
                <Button type='button' onClick={signInWithGoogle} isGoogleSignIn>
                   Login with Google
                </Button>
-            </div>
+            </LoginButtons>
          </form>
-      </div>
+      </LoginContainer>
    );
 };
 export default Login;
