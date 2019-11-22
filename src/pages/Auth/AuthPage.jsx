@@ -1,14 +1,14 @@
 import React from 'react';
-import './styles.scss';
 import Login from '../../components/Login/Login';
 import Register from '../../components/Register/Register';
+import { AuthContainer } from './styles';
 
 const AuthPage = () => {
    return (
-      <div className='auth'>
+      <AuthContainer>
          <Login/>
          <Register/>
-      </div>
+      </AuthContainer>
    );
 };
 
