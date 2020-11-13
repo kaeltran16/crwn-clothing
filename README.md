@@ -6,7 +6,7 @@
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Installation](#installation)
-
+* [Usage](#usage)
 
 
 <!-- ABOUT THE PROJECT -->
@@ -37,4 +37,10 @@ npm install
 npm run start
 ```
 
+## Usage
+1. Login with email: test@test.com and password: 123456
+2. Stripe test:
+- Card Number: 4242424242424242
+- Date: 03/21
+- CCV: 123
 [product-screenshot]: https://res.cloudinary.com/medium-cloned/image/upload/q_auto/v1575321964/crwn-clothing.png
