@@ -34,7 +34,7 @@ const App = ({ currentUser, setCurrentUser }) => {
       return () => {
          unsubscribe();
       };
-   }, []);
+   }, [setCurrentUser]);
 
    return (
       <div>
