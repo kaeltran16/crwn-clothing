@@ -1,12 +1,18 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { emptyCart } from '../../redux/cart/cartActions';
 
-const StripeButton = ({ price }) => {
+const StripeButton = ({ price, history, emptyCart }) => {
    const stripePrice = price * 100;
    const publicKey = `pk_test_zz2Obdnm9X3Xk81921mHlSV2005ZrNGBxJ`;
 
    const onToken = token => {
-      console.log(token);
+      if (token) {
+         emptyCart();
+         history.push('/');
+      }
    };
    return (
       <StripeCheckout label='Pay Now' name='Crwn Clothing' billingAdress
@@ -21,4 +27,8 @@ const StripeButton = ({ price }) => {
    );
 };
 
-export default StripeButton;
+const mapDispatchToProps = dispatch => ({
+   emptyCart: () => dispatch(emptyCart())
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(StripeButton));

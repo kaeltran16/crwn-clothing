@@ -14,3 +14,8 @@ export const LoginButtons = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const Error = styled.p`
+  font-size: 16px;
+  color: red;
+`;

@@ -3,6 +3,7 @@ import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 import { auth, createUserProfileDocument } from '../../firebase/utils';
 import { RegisterContainer, RegisterTitle } from './styles';
+import { Error } from '../Login/styles';
 
 
 const Register = () => {
@@ -10,6 +11,7 @@ const Register = () => {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    const [confirmPassword, setConfirmPassword] = useState('');
+   const [error, setError] = useState(null);
 
    const handleSubmit = async e => {
       e.preventDefault();
@@ -21,10 +23,12 @@ const Register = () => {
 
       try {
          const { user } = await auth.createUserWithEmailAndPassword(email, password);
+         setError(null);
 
          await createUserProfileDocument(user, displayName);
       } catch (e) {
-         console.error(`cannot create new user: ${e}`);
+         console.error(`cannot sign in: ${e}`);
+         setError(e.message);
       }
    };
 
@@ -56,6 +60,7 @@ const Register = () => {
                        value={confirmPassword}
                        label='Confirm Password' required
                        handleChange={e => handleChange(e, setConfirmPassword)}/>
+            {error && <Error>{error}</Error>}
 
             <Button type='submit'>Register</Button>
          </form>
